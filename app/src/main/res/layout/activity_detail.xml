@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_movie_poster"
+                android:layout_width="200dp"
+                android:layout_height="300sp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding"
+            android:text="@string/title"
+            android:textSize="@dimen/biggerFont"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:textSize="@dimen/smallerFont"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="@dimen/margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding"
+                android:text="@string/plot"
+                android:textSize="@dimen/biggerFont"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_dark"/>
+
+            <TextView
+                android:id="@+id/tv_plot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:textSize="@dimen/smallerFont"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="@dimen/margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding"
+                android:text="@string/rating"
+                android:textSize="@dimen/biggerFont"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_dark"/>
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:textSize="@dimen/smallerFont"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="@dimen/margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding"
+                android:text="@string/releaseData"
+                android:textSize="@dimen/biggerFont"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_dark"/>
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:textSize="@dimen/smallerFont"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="@dimen/margin" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

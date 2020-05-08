@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sort_option"
+        android:orderInCategory="1"
+        android:title="@string/sortOption"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/popularity"
+                android:orderInCategory="1"
+                android:title="@string/popularity"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/top_rated"
+                android:orderInCategory="2"
+                android:title="@string/topRated"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+</menu>

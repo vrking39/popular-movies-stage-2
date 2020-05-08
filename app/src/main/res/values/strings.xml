@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Project 1</string>
+    <string name="title">Title:</string>
+    <string name="plot">Plot:</string>
+    <string name="rating">Rating:</string>
+    <string name="releaseData">Release Date:</string>
+
+    <string name="sortOption">Sort</string>
+    <string name="topRated">Top Rated</string>
+    <string name="popularity">Popularity</string>
+
+    <string name="errorMessage">Something went wrong. Please try again.</string>
+
+
+</resources>
