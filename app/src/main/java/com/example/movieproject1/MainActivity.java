@@ -1,6 +1,7 @@
 package com.example.movieproject1;
 
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
 
     private MovieModel[] mMovie;
 
+    public static ContentResolver contentResolver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
 
         mErrorMessage = findViewById(R.id.tv_error_message);
         mLoading = findViewById(R.id.pd_loading);
+
+        contentResolver = MainActivity.this.getContentResolver();
+        DetailActivity.favoritesDB.getFavoriteMovies(contentResolver);
 
         if (isInternetAvailable() != false){
             mErrorMessage.setVisibility(View.VISIBLE);
@@ -76,6 +82,16 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
         loadMovieData();}
 
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String queryMovieSaved = queryMovie;
+        String nameSortSaved = nameSort;
+        outState.putString(CALLBACK_QUERY, queryMovieSaved);
+        outState.putString(CALLBACK_NAMESORT, nameSortSaved);
+    }
+
 
     private void loadMovieData(){
         new FetchMovieTask().execute(queryMovie);
@@ -112,6 +128,12 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
                 setTitle(nameSort);
                 loadMovieData();
                 break;
+            case R.id.favorites:
+                queryMovie = "favorites";
+                nameSort = "Favorites";
+                setTitle(nameSort);
+                loadMovieData();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,6 +147,10 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
         intent.putExtra("overview", mMovie[position].getOverview());
         intent.putExtra("rating", mMovie[position].getRating());
         intent.putExtra("release", mMovie[position].getRelease());
+        String id = String.valueOf(mMovie[position].getId());
+        intent.putExtra("id", id);
+
+
         startActivity(intent);
 
     }
@@ -132,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
     public boolean isInternetAvailable() {
         try {
             InetAddress ipAddr = InetAddress.getByName("google.com");
-            //You can replace it with your name
             return !ipAddr.equals("");
 
         } catch (Exception e) {
@@ -153,7 +178,13 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
 
         @Override
         protected MovieModel[] doInBackground(String... strings) {
-            URL url = UrlBuilder.buildUrl(strings[0]);
+            if (strings[0] == "favorites"){
+//                USE FAVORITES DATABASE
+                mMovie = FavoritesDB.GetFavoritesAsMovieModels();
+                return mMovie;
+            }
+            else {
+                URL url = UrlBuilder.buildUrl(strings[0], getResources().getString(R.string.API_key));
 
             try {
 
@@ -166,13 +197,16 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Click
                     data = data + line;
                 }
 
+
                 mMovie = JsonUtils.parseJson(data);
+                Log.e("Data", data);
 
                 httpURLConnection.disconnect();
             } catch (Exception e) {
                 Log.e("HELLOOOOO", "Problems create url", e);
             }
             return mMovie;
+            }
         }
 
         @Override

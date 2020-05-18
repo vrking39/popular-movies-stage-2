@@ -28,6 +28,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btn_trailer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trailer" />
+
+            <Button
+                android:id="@+id/btn_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/favorites" />
+
             <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,6 +105,24 @@
 
             <TextView
                 android:id="@+id/tv_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:textSize="@dimen/smallerFont"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginEnd="@dimen/margin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding"
+                android:text="@string/reviews"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/biggerFont"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_reviews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"

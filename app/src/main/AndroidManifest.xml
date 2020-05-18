@@ -23,6 +23,14 @@
         <activity android:name=".DetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"/>
+
+        <provider
+            android:authorities="com.example.movieproject1"
+            android:name=".data.FavoritesProvider"
+            android:enabled="true"
+            android:exported="true"/>
+
+
     </application>
 
 </manifest>

@@ -11,11 +11,10 @@ public class UrlBuilder<getApiKey> {
     private static final String QUERY_API = "api_key";
     private static final String BASE_URL = "https://api.themoviedb.org/3/movie";
 
-//    ADD API KEY HERE
-    public static final String API_KEY = "";
+
     public BufferedReader reader = null;
 
-    public static URL buildUrl(String route) {
+    public static URL buildUrl(String route, String API_KEY) {
 
         Uri uri = Uri.parse(BASE_URL)
                 .buildUpon()
